@@ -1,0 +1,59 @@
+name: Проблема с подключением SCP:SL
+description: Сообщить о неработающей стратегии или центральном сервере
+title: "[Connection]: "
+labels:
+  - connection
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Не публикуйте токены, пароли и другие секретные данные. Перед отправкой полностью перезапустите игру при активном winws.exe.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Где возникает проблема?
+      options:
+        - Клиент игрока
+        - Выделенный сервер
+        - Клиент и сервер
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Провайдер и регион
+      placeholder: Название провайдера, город/регион
+    validations:
+      required: true
+  - type: input
+    id: profile
+    attributes:
+      label: Профиль
+      placeholder: SCP-SL, SCP-SL ALT или HARD 1-24
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Результаты теста
+      description: Прикрепите test_results_*.txt или вставьте важный фрагмент.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Лог игры или сервера
+      description: Приложите свежий Player.log либо фрагмент LocalAdmin без секретных данных.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Проверки
+      options:
+        - label: Другие zapret/GoodbyeDPI/VPN остановлены
+          required: true
+        - label: Игра или сервер полностью перезапущены после запуска стратегии
+          required: true
+        - label: winws.exe оставался активным во время проверки
+          required: true

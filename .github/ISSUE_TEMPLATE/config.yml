@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Исходный проект Flowseal
+    url: https://github.com/Flowseal/zapret-discord-youtube/discussions
+    about: Общие вопросы по zapret, не относящиеся только к SCP:SL

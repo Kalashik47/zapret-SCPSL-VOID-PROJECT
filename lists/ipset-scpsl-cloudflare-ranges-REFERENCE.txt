@@ -1,0 +1,5 @@
+# Source reference. These ranges are also active in ipset-scpsl.txt and ipset-all.txt.
+# Warning: these Cloudflare networks are shared by many unrelated websites.
+172.67.64.0/18
+104.26.0.0/20
+2606:4700::/36

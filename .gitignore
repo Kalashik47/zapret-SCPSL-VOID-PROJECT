@@ -1,0 +1,4 @@
+test_results_*.txt
+*.log
+Thumbs.db
+Desktop.ini
