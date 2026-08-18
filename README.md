@@ -17,6 +17,11 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 > `Code → Download ZIP` является снимком репозитория и может не содержать
 > сторонние исполняемые файлы, необходимые для запуска.
 
+В Releases доступны два пакета:
+
+- `zapret-SCPSL-VOID-PROJECT-1.10.1.zip` — Windows;
+- `zapret-SCPSL-VOID-PROJECT-Linux-1.10.1.tar.gz` — Linux.
+
 ## Для кого эта сборка
 
 - Для игрока, у которого SCP:SL зависает на сообщении о подключении к
@@ -28,8 +33,9 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 ## Обязательные настройки
 
 > [!CAUTION]
-> Перед запуском обязательно откройте `service.bat` и убедитесь, что выставлены:
-> **Game Filter — enabled (TCP and UDP)** и **IPSet Filter — any**.
+> В Windows перед запуском обязательно откройте `service.bat` и убедитесь, что
+> выставлены: **Game Filter — enabled (TCP and UDP)** и
+> **IPSet Filter — any**. В Linux-пакете эти значения уже зафиксированы.
 > Без этих параметров обход игровых и центральных соединений SCP:SL может не
 > работать. После изменения настроек перезапустите стратегию, Steam и игру.
 
@@ -55,6 +61,26 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 4. Не направляйте игровой UDP-порт через прокси. `public/server_ip` должен
    оставаться реальным публичным IP сервера.
 
+## Быстрый запуск в Linux
+
+Linux-пакет использует актуальную ветку
+[bol-van/zapret2](https://github.com/bol-van/zapret2), а не устаревшую первую
+версию `zapret`. Он предназначен для обычного Linux с NFQUEUE и не рассчитан на
+WSL или macOS.
+
+```bash
+tar -xzf zapret-SCPSL-VOID-PROJECT-Linux-1.10.1.tar.gz
+cd zapret-SCPSL-VOID-PROJECT-Linux-1.10.1
+chmod +x SCP-SL-Linux.sh
+sudo ./SCP-SL-Linux.sh install
+./SCP-SL-Linux.sh test
+```
+
+Установщик скачивает официальный архив `zapret2`, сверяет его SHA-256 по
+официальному файлу контрольных сумм, запускает официальный установщик и только
+после этого добавляет профиль SCP:SL. Подробности и команды отката находятся в
+[`linux/README.md`](linux/README.md).
+
 ## Основные файлы
 
 | Файл | Назначение |
@@ -64,6 +90,7 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 | `general (SCPSL HARD 1-24).bat` | 24 профиля для ручного перебора и тестирования |
 | `service.bat` | Установка службы, настройки, диагностика и автоматические тесты |
 | `README SCP-SL.txt` | Полная офлайн-инструкция внутри архива |
+| `linux/SCP-SL-Linux.sh` | Установка, управление и тестирование Linux-профиля |
 
 ## Автоматический подбор стратегии
 
@@ -85,6 +112,11 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 - сервер: фрагмент LocalAdmin с URL, HTTP-кодом и текстом исключения.
 
 ## Настройки по умолчанию
+
+> [!IMPORTANT]
+> Для этой сборки должны быть установлены **Game Filter: enabled (TCP and UDP)**
+> и **IPSet Filter: any**. В Linux этим настройкам соответствуют включённые
+> `NFQWS2_PORTS_TCP` + `NFQWS2_PORTS_UDP` и `MODE_FILTER=none`.
 
 - `Game Filter`: **enabled (TCP and UDP)**.
 - `IPSet Filter`: **any**.
@@ -109,10 +141,12 @@ SCP: Secret Laboratory. Она предназначена для случаев,
 
 ## Происхождение и лицензия
 
-Сборка основана на [Flowseal/zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube)
+Windows-сборка основана на
+[Flowseal/zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube)
 и использует компоненты [bol-van/zapret](https://github.com/bol-van/zapret) и
-[WinDivert](https://github.com/basil00/WinDivert). Условия и уведомления сохранены
-в [LICENSE.txt](LICENSE.txt).
+[WinDivert](https://github.com/basil00/WinDivert). Linux-установщик использует
+актуальный [bol-van/zapret2](https://github.com/bol-van/zapret2). Условия и
+уведомления сохранены в [LICENSE.txt](LICENSE.txt).
 
 ## VOID PROJECT
 
